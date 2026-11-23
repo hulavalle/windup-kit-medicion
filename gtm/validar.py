@@ -1,14 +1,15 @@
 """Valida los contenedores de GTM del kit contra la especificación y su matriz.
 
 Archivos:
-- fandango-inicio.json y fandango-solucion.json (web demo de Café Fandango, plan/matriz.csv).
+- fandango-inicio.json y fandango-solucion.json (web demo de Café Fandango, plan/ejemplos/matriz-cafe-fandango.csv).
 - wp-tags-base.json (WordPress + GTM4WP, punto de partida del alumno).
-- wp-solucion-ecommerce.json (WooCommerce, filas de plan/matriz.csv que GTM4WP puede producir).
+- wp-solucion-ecommerce.json (WooCommerce, filas de plan/ejemplos/matriz-cafe-fandango.csv que GTM4WP puede producir).
 - wp-solucion-leadgen.json (clínica dental, plan/ejemplos/matriz-clinica-dental.csv).
 
 Uso, desde la raíz del repositorio: python3 gtm/validar.py gtm/<proyecto>.json
 Con un archivo de otro nombre (tu proyecto) solo comprueba la estructura.
-Sin argumentos comprueba los cinco del kit contra su matriz (plan/matriz.csv es la de Café Fandango).
+Sin argumentos comprueba los cinco del kit contra las matrices de ejemplo de plan/ejemplos/.
+No lee plan/matriz.csv: esa es la de tu proyecto.
 Sale con código 1 si algo falla.
 """
 import csv
@@ -18,7 +19,7 @@ import sys
 from pathlib import Path
 
 GTM_DIR = Path(__file__).resolve().parent
-MATRIZ = GTM_DIR.parent / "plan" / "matriz.csv"
+MATRIZ = GTM_DIR.parent / "plan" / "ejemplos" / "matriz-cafe-fandango.csv"
 MATRIZ_DENTAL = GTM_DIR.parent / "plan" / "ejemplos" / "matriz-clinica-dental.csv"
 
 # Activadores integrados de GTM que no aparecen en la lista "trigger" de una exportación.

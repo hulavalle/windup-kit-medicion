@@ -1,6 +1,6 @@
 # Contenedores de GTM
 
-Contenedores de Google Tag Manager en formato de exportación (`exportFormatVersion: 2`). Los de Café Fandango siguen la sección «Contenedores de GTM» de `../especificacion.md` y la matriz `../plan/matriz.csv`; los de WordPress siguen `../gtm4wp.md`.
+Contenedores de Google Tag Manager en formato de exportación (`exportFormatVersion: 2`). Los de Café Fandango siguen la sección «Contenedores de GTM» de `../especificacion.md` y la matriz `../plan/ejemplos/matriz-cafe-fandango.csv`; los de WordPress siguen `../gtm4wp.md`.
 
 | Archivo | Para quién | Qué es |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ Contenedores de Google Tag Manager en formato de exportación (`exportFormatVers
 | `wp-solucion-ecommerce.json` | Profesor | Referencia para una tienda WooCommerce: la base más las etiquetas de la matriz de Café Fandango que GTM4WP puede producir. |
 | `wp-solucion-leadgen.json` | Profesor | Referencia para una web de captación con Contact Form 7: la base más una etiqueta y un activador por fila de `../plan/ejemplos/matriz-clinica-dental.csv`. |
 | `fandango-inicio.json` | Profesor (demo) | Punto de partida sobre la web demo de Café Fandango: Google tag y variables. Sin activadores ni etiquetas de evento. |
-| `fandango-solucion.json` | Profesor (demo) | `fandango-inicio.json` más los 9 activadores y las 9 etiquetas de evento que cubren las 10 filas de `../plan/matriz.csv`. |
+| `fandango-solucion.json` | Profesor (demo) | `fandango-inicio.json` más los 9 activadores y las 9 etiquetas de evento que cubren las 10 filas de `../plan/ejemplos/matriz-cafe-fandango.csv`. |
 | `validar.py` | Quien toque los JSON | Comprueba la estructura de tu contenedor y, sin argumentos, los cinco archivos del kit contra la especificación y su matriz. |
 
 Las soluciones son referencias para corregir y comparar, no para que el alumno las importe en su contenedor de trabajo: el ejercicio es construir las etiquetas a partir de su propia matriz.
@@ -125,9 +125,9 @@ Solo usa la librería estándar de Python 3: no hay que instalar nada. Con tu ar
 Sin argumentos (`python3 gtm/validar.py`) no mira tu contenedor: comprueba los cinco archivos del kit. Además de la estructura:
 
 - `fandango-inicio.json` y `wp-tags-base.json`: traen las variables que piden la especificación y `../gtm4wp.md`, sin etiquetas de evento; la base solo trae `Timer - 5 s` (5000 ms, límite 1, todas las páginas). Los de Fandango no llevan variables integradas que la especificación no pida (las de vídeo, por ejemplo).
-- Cada solución contra su matriz: por fila, su etiqueta `GA4 - evento - <evento>`, su activador con el tipo y las condiciones de la matriz (en los temporizadores, 5000 ms y límite 1) y sus parámetros; y ninguna etiqueta de evento que no salga de la matriz. `fandango-solucion.json` y `wp-solucion-ecommerce.json` se miden contra la matriz de Café Fandango, `../plan/matriz.csv` (la de WooCommerce sin la fila 10); `wp-solucion-leadgen.json`, contra `../plan/ejemplos/matriz-clinica-dental.csv`.
+- Cada solución contra su matriz: por fila, su etiqueta `GA4 - evento - <evento>`, su activador con el tipo y las condiciones de la matriz (en los temporizadores, 5000 ms y límite 1) y sus parámetros; y ninguna etiqueta de evento que no salga de la matriz. `fandango-solucion.json` y `wp-solucion-ecommerce.json` se miden contra la matriz de Café Fandango, `../plan/ejemplos/matriz-cafe-fandango.csv` (la de WooCommerce sin la fila 10); `wp-solucion-leadgen.json`, contra `../plan/ejemplos/matriz-clinica-dental.csv`.
 
-Si ya has reescrito `../plan/matriz.csv` con la de tu proyecto, la comprobación sin argumentos de las soluciones de Fandango fallará: es normal, porque miden contra esa matriz.
+La comprobación sin argumentos no lee `../plan/matriz.csv`, que es la de tu proyecto: puedes reescribirla sin que fallen las soluciones de ejemplo.
 
 Trabajar el repositorio con IA (que la IA lea y escriba estos archivos y ejecute el validador) necesita un agente que trabaje sobre la carpeta, por ejemplo Claude Code, Codex, Cursor o Gemini CLI, no el chat web.
 

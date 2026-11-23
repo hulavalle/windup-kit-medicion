@@ -143,7 +143,7 @@ Con *Also push GA4 recommended events* activado, el plugin empuja además `form_
 
 ## De la matriz de Café Fandango a WordPress con GTM4WP
 
-Supón Café Fandango montada en WordPress con WooCommerce y Contact Form 7. Fila por fila de `plan/matriz.csv`:
+Supón Café Fandango montada en WordPress con WooCommerce y Contact Form 7. Fila por fila de `plan/ejemplos/matriz-cafe-fandango.csv`:
 
 | Fila | Evento GA4 | Activador con GTM4WP | Condición | De dónde salen los parámetros | Cambio respecto a la web demo |
 | --- | --- | --- | --- | --- | --- |

@@ -27,7 +27,7 @@ Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementac
 
 1. Abre la plantilla de tu tipo de negocio: `cuaderno/plantilla-ecommerce.docx` si vendes o `cuaderno/plantilla-leadgen.docx` si captas contactos. Cada paso explica por qué se hace y trae un ejemplo resuelto.
 2. Haz los pasos 0 a 6 en orden. Son el diseño en papel y acaban en tu matriz de conversiones.
-3. Mira la demo por tu cuenta. Arranca la web de Café Fandango (`web/README.md`) e importa `gtm/fandango-inicio.json` en un contenedor de pruebas. Construye las etiquetas de las filas de `plan/matriz.csv` y compáralas con `gtm/fandango-solucion.json`.
+3. Mira la demo por tu cuenta. Arranca la web de Café Fandango (`web/README.md`) e importa `gtm/fandango-inicio.json` en un contenedor de pruebas. Construye las etiquetas de las filas de `plan/ejemplos/matriz-cafe-fandango.csv` y compáralas con `gtm/fandango-solucion.json`.
 4. Hazlo en tu WordPress con los pasos 7 a 11 de tu plantilla.
 
 ## Qué hay dentro
@@ -36,7 +36,7 @@ Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementac
 | --- | --- | --- |
 | `cuaderno/` | `cuaderno-de-clase.docx`: los 12 pasos en versión corta. `plantilla-ecommerce.docx` y `plantilla-leadgen.docx`: los 12 pasos completos para una tienda online (WooCommerce) o para captación de leads (ejemplo: Clínica Dental Alameda). Sus fuentes en markdown están en `cuaderno/clase/` y `cuaderno/plantilla/` | El cuaderno de clase, en clase. La plantilla, después, en tu proyecto |
 | `gtm4wp.md` | Cómo instalar GTM en WordPress con GTM4WP, qué ajustes activar y qué eventos empuja | En el bucle 0 y en tu proyecto |
-| `plan/` | La matriz de conversiones, las UTMs y el registro de QA en CSV | Rellenas una fila por decisión |
+| `plan/` | La matriz de conversiones, las UTMs y el registro de QA en CSV. Empiezan con filas de ejemplo de Café Fandango: sustitúyelas por las tuyas. En Excel no abras los CSV con doble clic, porque se descolocan las columnas y las tildes: usa **Datos** > **Obtener datos** > **Desde texto/CSV** (origen UTF-8, delimitador coma) y guarda como **CSV UTF-8 (delimitado por comas)**. | Rellenas una fila por decisión |
 | `especificacion.md` | El contrato técnico: eventos, parámetros, IDs y dataLayer | Lo que entregas a quien desarrolla la web |
 | `gtm/` | `wp-tags-base.json` (tu punto de partida en WordPress), soluciones de referencia y el validador | En la implementación |
 | `web/` | La web demo de Café Fandango | La usa el profesor en las demos; tú practicas en tu WordPress |

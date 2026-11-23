@@ -43,7 +43,7 @@ Estas son las fuentes de la plantilla, agrupadas por los pasos que apoyan. Los l
 
 ## Material del kit
 
-- `especificacion.md` y `plan/matriz.csv`. El contrato técnico de Café Fandango, del que salen todos los ejemplos.
+- `especificacion.md` y `plan/ejemplos/matriz-cafe-fandango.csv`. El contrato técnico de Café Fandango, del que salen todos los ejemplos.
 - `gtm4wp.md`. Ajustes de GTM4WP 2.1.1, lo que empuja al dataLayer y la matriz de Café Fandango en WooCommerce. Pasos 1, 7, 8 y 9.
 - `gtm/wp-tags-base.json` y `gtm/validar.py`. Tu punto de partida en el paso 8.
 - `gtm/fandango-inicio.json` y `gtm/fandango-solucion.json`. Los contenedores de la demo de clase.
