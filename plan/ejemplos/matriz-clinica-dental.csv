@@ -1,0 +1,7 @@
+id,accion_negocio,tipo,evento_ga4,parametros,activador_gtm,condicion,evento_clave,pregunta_de_negocio,contrapeso
+1,Clic en «Pedir cita»,micro,cta_click,"element_text, link_url",Clic - Solo enlaces,Click URL contiene /pedir-cita,no,¿Qué páginas empujan a pedir cita?,
+2,Lee la página de un tratamiento (75 % de scroll),micro,page_read,"percent_scrolled, page_path",Profundidad de desplazamiento,"75 % vertical, Page Path contiene /tratamientos/implantes",no,¿La información del tratamiento acerca a la cita?,
+3,Pasa 5 s en una página de servicio,micro,timer_5s,page_path,Temporizador (Timer - 5 s),Page Path contiene /tratamientos/,no,¿Qué servicios retienen al visitante?,
+4,Envía el formulario de cita,macro,generate_lead,"lead_type=cita, form_id",Evento personalizado,event = gtm4wp.contactForm7MailSent y formname = Pedir cita,sí,¿Qué canal trae pacientes?,al menos un 60 % de solicitudes acaban en cita confirmada
+5,Pulsa el teléfono,macro,phone_click,page_path,Clic - Solo enlaces,Click URL empieza por tel:,sí,¿Qué canal trae llamadas?,al menos un 80 % de llamadas atendidas
+6,Pulsa WhatsApp,macro,whatsapp_click,page_path,Clic - Solo enlaces,Click URL coincide con wa\.me|api\.whatsapp\.com,sí,¿Qué canal trae conversaciones de WhatsApp?,al menos un 50 % de conversaciones con respuesta del paciente

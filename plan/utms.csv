@@ -1,0 +1,4 @@
+origen,url_destino,utm_source,utm_medium,utm_campaign,utm_content,url_final,canal_ga4_esperado
+Newsletter,http://localhost:8000/producto.html?id=ETI-250,newsletter,email,2026-11_lanzamiento-etiopia,boton-hero,http://localhost:8000/producto.html?id=ETI-250&utm_source=newsletter&utm_medium=email&utm_campaign=2026-11_lanzamiento-etiopia&utm_content=boton-hero,Email
+Post de Instagram,http://localhost:8000/producto.html?id=ETI-250,instagram,social,2026-11_lanzamiento-etiopia,carrusel,http://localhost:8000/producto.html?id=ETI-250&utm_source=instagram&utm_medium=social&utm_campaign=2026-11_lanzamiento-etiopia&utm_content=carrusel,Organic Social
+Anuncio de Meta,http://localhost:8000/producto.html?id=ETI-250,facebook,paid_social,{{campaign.name}},{{ad.name}},http://localhost:8000/producto.html?id=ETI-250&utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}},Paid Social

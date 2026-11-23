@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suscripción mensual · Café Fandango</title>
+<meta name="description" content="Dos cafés de especialidad recién tostados cada mes por 24 €.">
+<!-- 1. Contenedor de GTM del alumno: siempre lo primero del <head> -->
+<script src="/assets/gtm.js"></script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23b5432a'/%3E%3Cpath d='M5.5 20.5 A10.5 10.5 0 0 1 26.5 20.5 Z' fill='%23f6f0e6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&amp;family=Instrument+Sans:wght@400;500;600&amp;display=swap">
+<link rel="stylesheet" href="/assets/styles.css">
+<script src="/assets/debug.js" defer></script>
+<script src="/assets/app.js" defer></script>
+</head>
+<body data-pagina="suscripcion">
+<header class="cabecera">
+  <div class="contenedor">
+    <a class="marca" href="/index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#b5432a"/><path d="M5.5 20.5 A10.5 10.5 0 0 1 26.5 20.5 Z" fill="#f6f0e6"/><path d="M16 20.5 L8.6 13 M16 20.5 L12 10.6 M16 20.5 V10 M16 20.5 L20 10.6 M16 20.5 L23.4 13" stroke="#b5432a" stroke-width="1.3"/><circle cx="16" cy="21" r="1.8" fill="#b5432a"/></svg>Café Fandango</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="/cafes.html">Cafés</a><a href="/suscripcion.html" aria-current="page">Suscripción</a><a href="/guia.html">Guía V60</a><a href="/empresas.html">Cafeterías</a>
+      <a class="nav-carrito" href="/carrito.html" data-contador-carrito>Carrito</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="pagina-cabeza">
+  <div class="contenedor">
+    <p class="antetitulo">Suscripción mensual Fandango</p>
+    <h1>Dos cafés nuevos cada mes</h1>
+    <p>Elegimos dos orígenes en la mesa de cata, los tostamos el martes y el jueves están en tu casa. Sin permanencia.</p>
+  </div>
+</section>
+<div class="contenedor plan">
+  <div>
+    <ul class="lista-check">
+      <li>Dos bolsas de 250 g de orígenes distintos cada mes</li>
+      <li>En grano, molido para filtro o molido para espresso</li>
+      <li>Ficha de cata con la receta que usamos en el obrador</li>
+      <li>Envío incluido a toda la península</li>
+      <li>Pausa, cambia o cancela desde tu cuenta cuando quieras</li>
+    </ul>
+    <h2 style="margin-top:48px">Preguntas frecuentes</h2>
+    <div class="preguntas">
+      <details><summary>¿Cuándo se cobra?</summary><p>El día que te suscribes y después el mismo día de cada mes. Si cancelas antes de esa fecha, no se vuelve a cobrar.</p></details>
+      <details><summary>¿Puedo elegir los cafés?</summary><p>Los elegimos nosotros: es la gracia. Si un origen no te encaja, nos lo dices y lo tenemos en cuenta para tus próximas cajas.</p></details>
+      <details><summary>¿Y si me voy de vacaciones?</summary><p>Pausas la suscripción uno o dos meses desde tu cuenta, sin coste.</p></details>
+      <details><summary>¿Llega a Canarias o Baleares?</summary><p>A Baleares sí, con un día más de plazo. A Canarias todavía no, por la aduana.</p></details>
+    </div>
+  </div>
+  <aside class="plan-tarjeta">
+    <h2>Suscripción mensual Fandango</h2>
+    <p class="precio-grande">24 € <small>/ mes</small></p>
+    <ul>
+      <li>2 × 250 g de café recién tostado</li>
+      <li>Envío incluido</li>
+      <li>Sin permanencia</li>
+    </ul>
+    <button id="btn-suscribir" class="boton boton-ancho" type="button">Suscribirme por 24 €/mes</button>
+    <p class="letra-pequena">Pago simulado: es una tienda de prácticas y no se cobra nada.</p>
+  </aside>
+</div>
+</main>
+<footer class="pie">
+  <div class="contenedor">
+    <div>
+      <a class="marca" href="/index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#b5432a"/><path d="M5.5 20.5 A10.5 10.5 0 0 1 26.5 20.5 Z" fill="#f6f0e6"/><path d="M16 20.5 L8.6 13 M16 20.5 L12 10.6 M16 20.5 V10 M16 20.5 L20 10.6 M16 20.5 L23.4 13" stroke="#b5432a" stroke-width="1.3"/><circle cx="16" cy="21" r="1.8" fill="#b5432a"/></svg>Café Fandango</a>
+      <p>Tostadores de especialidad en Huelva. Tostamos los martes y los jueves, en lotes de 12 kilos, y enviamos a toda la península.</p>
+    </div>
+    <div>
+      <h4>Tienda</h4>
+      <ul>
+        <li><a href="/cafes.html">Todos los cafés</a></li>
+        <li><a href="/suscripcion.html">Suscripción mensual</a></li>
+        <li><a href="/carrito.html">Carrito</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Aprende y trabaja con nosotros</h4>
+      <ul>
+        <li><a href="/guia.html">Cómo preparar café en V60</a></li>
+        <li><a href="/empresas.html">Café para cafeterías</a></li>
+      </ul>
+    </div>
+    <p class="aviso-demo">Tienda ficticia para las prácticas de Google Tag Manager del Máster Técnico en Marketing Digital &amp; IA. No se vende, no se envía y no se cobra nada.</p>
+  </div>
+</footer>
+</body>
+</html>

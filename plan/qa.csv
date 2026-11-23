@@ -1,0 +1,11 @@
+id,evento_ga4,accion_de_prueba,dispara_cuando_debe,no_dispara_cuando_no_debe,parametros_ok,captura_tag_assistant,captura_debugview,ok
+1,view_item_list,Abrir /cafes.html,,,,,,
+2,view_item,Abrir /producto.html?id=ETI-250,,,,,,
+3,add_to_cart,Pulsar Añadir al carrito,,,,,,
+4,page_read,Bajar al 75 % de /guia.html,,,,,,
+5,timer_5s,Quedarse 5 segundos en la ficha (y comprobar que no salta en otras páginas),,,,,,
+6,cta_click,Pulsar Suscribirme en la portada (y comprobar que el del pie no dispara),,,,,,
+7,begin_checkout,Pulsar Tramitar pedido en el carrito,,,,,,
+8,purchase (one_time),Pagar un pedido,,,,,,
+9,purchase (subscription),Suscribirse al plan mensual,,,,,,
+10,generate_lead,Enviar el formulario de cafeterías,,,,,,
