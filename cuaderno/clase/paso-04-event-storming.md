@@ -4,6 +4,8 @@
 
 Trabaja en grupo, desde que os descubren hasta la segunda compra o conversión. Haz una sola pregunta: «¿qué pasa después?». Pega un post-it naranja por evento y añade a cada uno el rosa con el sistema, el verde con los datos y el morado con las dudas. Pasa aquí de 10 a 15 eventos candidatos.
 
+También puedes hacerlo en el tablero de FigJam de la clase: busca el de tu equipo, copia los post-its de su kit y dibuja el recorrido en el bloque 3. Después pasa los eventos a la plantilla 4.1: https://www.figma.com/board/UzrhmskaeYXJLCetVEPJ7r
+
 *Ejemplo 4.1. Cinco post-its del recorrido de Café Fandango*
 
 | Nº | Qué pasa (naranja) | Sistema (rosa) | Datos (verde) | Dudas (morado) |

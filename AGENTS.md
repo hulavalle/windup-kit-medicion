@@ -27,7 +27,7 @@ Si `plan/matriz.csv` aún tiene las filas de Café Fandango o `brain/proyecto.md
 - **De la especificación al contenedor**: genera o actualiza `gtm/<proyecto>.json` con una etiqueta y un activador por fila, siguiendo la convención de nombres de `especificacion.md`. Después ejecuta, desde la raíz del repositorio, `python3 gtm/validar.py gtm/<proyecto>.json` (solo usa la librería estándar de Python) y no entregues nada que no pase. Con un archivo de otro nombre que los del kit, el validador solo comprueba la estructura: no conoce tu matriz, así que compara tú cada etiqueta con `plan/matriz.csv`.
 - **UTMs**: genera enlaces en `plan/utms.csv` con la convención de la especificación (minúsculas, sin espacios ni tildes, valores cerrados de source y medium).
 - **QA**: prepara `plan/qa.csv` con una fila por evento de la matriz; la persona añade las capturas y marca OK.
-- **Cuaderno**: la persona rellena los `.docx` a mano en Word. No ejecutes `cuaderno/construir_docx.py` ni edites `cuaderno/` salvo que te lo pida: regenerar sobrescribe los `.docx` y borra sus respuestas. Si te lo pide, dile antes que guarde una copia de su `.docx` con otro nombre.
+- **Cuaderno**: la persona rellena `cuaderno/cuaderno-de-clase.pdf` en su ordenador y, después de clase, su plantilla `.docx` en Word. No edites ni regeneres nada de `cuaderno/` salvo que te lo pida: `cuaderno/construir_docx.py` sobrescribe los `.docx` y borra sus respuestas, y el PDF no sale de este repositorio. Si te lo pide, dile antes que guarde una copia con otro nombre.
 
 ## Límites
 

@@ -19,14 +19,14 @@ Trae esto preparado. Si te falta algo, en clase vas por detrás.
 ## Por dónde empezar
 
 1. **Crea tu copia del kit.** Entra en [github.com/hulavalle/windup-kit-medicion](https://github.com/hulavalle/windup-kit-medicion) y pulsa **Use this template** > **Create a new repository**. Ponle el nombre de tu proyecto y elige **Private**: tu copia va a tener datos de tu proyecto. Después, llévala a tu ordenador: en tu copia, pulsa **Code** > **Download ZIP** y descomprímelo, o clónala con GitHub Desktop. Trabaja sobre esa carpeta. Si no usas GitHub, pulsa el botón **Code** > **Download ZIP** y descomprímelo en tu ordenador.
-2. **Abre `cuaderno/cuaderno-de-clase.docx` en el paso 0.** La clase empieza con el diseño en papel (pasos 0 a 6) y después pasa a la implementación en tu WordPress (pasos 7 a 11).
+2. **Rellena `cuaderno/cuaderno-de-clase.pdf` en tu ordenador, desde el paso 0.** Ábrelo con Adobe Acrobat Reader (gratis) o con Vista Previa en Mac, escribe en las celdas grises, marca las casillas y guarda el archivo. Nada se hace en papel. La clase empieza con el diseño en el PDF y en el FigJam de la clase (pasos 0 a 6) y después pasa a la implementación en tu WordPress (pasos 7 a 11).
 
 ## Si no estuviste en clase
 
 Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementación: 0, GTM4WP y contenedor base; 1, píxel de Meta; 2, clic, scroll y temporizador; 3, ecommerce o formulario; 4, QA y publicación; 5, UTMs.
 
 1. Abre la plantilla de tu tipo de negocio: `cuaderno/plantilla-ecommerce.docx` si vendes o `cuaderno/plantilla-leadgen.docx` si captas contactos. Cada paso explica por qué se hace y trae un ejemplo resuelto.
-2. Haz los pasos 0 a 6 en orden. Son el diseño en papel y acaban en tu matriz de conversiones.
+2. Haz los pasos 0 a 6 en orden. Son el diseño de la medición y acaban en tu matriz de conversiones.
 3. Mira la demo por tu cuenta. Arranca la web de Café Fandango (`web/README.md`) e importa `gtm/fandango-inicio.json` en un contenedor de pruebas. Construye las etiquetas de las filas de `plan/ejemplos/matriz-cafe-fandango.csv` y compáralas con `gtm/fandango-solucion.json`.
 4. Hazlo en tu WordPress con los pasos 7 a 11 de tu plantilla.
 
@@ -34,7 +34,7 @@ Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementac
 
 | Carpeta | Qué es | Cuándo la usas |
 | --- | --- | --- |
-| `cuaderno/` | `cuaderno-de-clase.docx`: los 12 pasos en versión corta. `plantilla-ecommerce.docx` y `plantilla-leadgen.docx`: los 12 pasos completos para una tienda online (WooCommerce) o para captación de leads (ejemplo: Clínica Dental Alameda). Sus fuentes en markdown están en `cuaderno/clase/` y `cuaderno/plantilla/` | El cuaderno de clase, en clase. La plantilla, después, en tu proyecto |
+| `cuaderno/` | `cuaderno-de-clase.pdf`: los 12 pasos en versión corta, el cuaderno que rellenas en tu ordenador durante la clase (`cuaderno-de-clase.docx` es el mismo texto en Word). `plantilla-ecommerce.docx` y `plantilla-leadgen.docx`: los 12 pasos completos para una tienda online (WooCommerce) o para captación de leads (ejemplo: Clínica Dental Alameda). Sus fuentes en markdown están en `cuaderno/clase/` y `cuaderno/plantilla/` | El cuaderno de clase, en clase. La plantilla, después, en tu proyecto |
 | `gtm4wp.md` | Cómo instalar GTM en WordPress con GTM4WP, qué ajustes activar y qué eventos empuja | En el bucle 0 y en tu proyecto |
 | `plan/` | La matriz de conversiones, las UTMs y el registro de QA en CSV. Empiezan con filas de ejemplo de Café Fandango: sustitúyelas por las tuyas. En Excel no abras los CSV con doble clic, porque se descolocan las columnas y las tildes: usa **Datos** > **Obtener datos** > **Desde texto/CSV** (origen UTF-8, delimitador coma) y guarda como **CSV UTF-8 (delimitado por comas)**. | Rellenas una fila por decisión |
 | `especificacion.md` | El contrato técnico: eventos, parámetros, IDs y dataLayer | Lo que entregas a quien desarrolla la web |
@@ -46,7 +46,7 @@ Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementac
 
 ## En clase
 
-Primero, el diseño en papel: pasos 0 a 6 del cuaderno. Después, la implementación:
+Primero, el diseño: pasos 0 a 6 del cuaderno PDF, con las entidades y el event storming (pasos 3 y 4) en el FigJam de la clase. Después, la implementación:
 
 1. Instala el plugin GTM4WP en el WordPress de tu proyecto y pega el ID de tu contenedor (guía: `gtm4wp.md`).
 2. En GTM: Administrar > Importar contenedor > `gtm/wp-tags-base.json` > espacio de trabajo nuevo > Combinar. Cambia `Const - GA4 ID` por el ID de medición de tu propiedad de GA4.

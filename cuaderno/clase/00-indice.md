@@ -2,7 +2,7 @@
 
 Máster Técnico en Marketing Digital & IA · Clase de Google Tag Manager · 2026
 
-Este cuaderno se rellena entero en clase y todo sobre el proyecto de tu grupo. Los pasos de diseño se hacen en papel. Los de implementación se hacen en el WordPress de tu proyecto, con el plugin GTM4WP y el contenedor `gtm/wp-tags-base.json` del kit. El profesor hace cada demo con Café Fandango, y cada paso trae Café Fandango resuelto como ejemplo. Los ejemplos de Café Fandango sirven para comprobar lo que haces.
+Este cuaderno se rellena entero en clase y todo sobre el proyecto de tu grupo. Los pasos de diseño se hacen en este PDF y en el FigJam de la clase. Los de implementación se hacen en el WordPress de tu proyecto, con el plugin GTM4WP y el contenedor `gtm/wp-tags-base.json` del kit. El profesor hace cada demo con Café Fandango, y cada paso trae Café Fandango resuelto como ejemplo. Los ejemplos de Café Fandango sirven para comprobar lo que haces.
 
 *Plantilla A. Datos del grupo*
 
