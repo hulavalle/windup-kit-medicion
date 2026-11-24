@@ -28,6 +28,7 @@ Si `plan/matriz.csv` aún tiene las filas de Café Fandango o `brain/proyecto.md
 - **UTMs**: genera enlaces en `plan/utms.csv` con la convención de la especificación (minúsculas, sin espacios ni tildes, valores cerrados de source y medium).
 - **QA**: prepara `plan/qa.csv` con una fila por evento de la matriz; la persona añade las capturas y marca OK.
 - **Cuaderno**: la persona rellena los `.docx` a mano en Word. No ejecutes `cuaderno/construir_docx.py` ni edites `cuaderno/` salvo que te lo pida: regenerar sobrescribe los `.docx` y borra sus respuestas. Si te lo pide, dile antes que guarde una copia de su `.docx` con otro nombre.
+- `cuaderno/cuaderno-de-clase.pdf` se maqueta en Figma a partir de `cuaderno/clase/`, no con `construir_docx.py`. Si cambias `cuaderno/clase/`, avisa de que el PDF hay que volver a exportarlo desde Figma.
 
 ## Límites
 

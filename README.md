@@ -34,7 +34,7 @@ Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementac
 
 | Carpeta | Qué es | Cuándo la usas |
 | --- | --- | --- |
-| `cuaderno/` | `cuaderno-de-clase.docx`: los 12 pasos en versión corta. `plantilla-ecommerce.docx` y `plantilla-leadgen.docx`: los 12 pasos completos para una tienda online (WooCommerce) o para captación de leads (ejemplo: Clínica Dental Alameda). Sus fuentes en markdown están en `cuaderno/clase/` y `cuaderno/plantilla/` | El cuaderno de clase, en clase. La plantilla, después, en tu proyecto |
+| `cuaderno/` | `cuaderno-de-clase.docx`: los 12 pasos en versión corta. `cuaderno-de-clase.pdf`: el mismo cuaderno maquetado para imprimir. `plantilla-ecommerce.docx` y `plantilla-leadgen.docx`: los 12 pasos completos para una tienda online (WooCommerce) o para captación de leads (ejemplo: Clínica Dental Alameda). Sus fuentes en markdown están en `cuaderno/clase/` y `cuaderno/plantilla/` | El cuaderno de clase, en clase. La plantilla, después, en tu proyecto |
 | `gtm4wp.md` | Cómo instalar GTM en WordPress con GTM4WP, qué ajustes activar y qué eventos empuja | En el bucle 0 y en tu proyecto |
 | `plan/` | La matriz de conversiones, las UTMs y el registro de QA en CSV. Empiezan con filas de ejemplo de Café Fandango: sustitúyelas por las tuyas. En Excel no abras los CSV con doble clic, porque se descolocan las columnas y las tildes: usa **Datos** > **Obtener datos** > **Desde texto/CSV** (origen UTF-8, delimitador coma) y guarda como **CSV UTF-8 (delimitado por comas)**. | Rellenas una fila por decisión |
 | `especificacion.md` | El contrato técnico: eventos, parámetros, IDs y dataLayer | Lo que entregas a quien desarrolla la web |
