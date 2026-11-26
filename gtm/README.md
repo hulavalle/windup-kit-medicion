@@ -55,6 +55,8 @@ No trae etiquetas de evento: el alumno las construye a partir de su matriz con l
 
 Una etiqueta de evento de GA4 por cada evento de la clase, ya conectada a su activador. Las etiquetas solo llevan el nombre del evento, sin parámetros: los añades tú si tu matriz los pide.
 
+Vídeo paso a paso (importarla, probar cada evento, ajustar el activador del clic y comprobarlo en DebugView): [`../videos/`](../videos/README.md).
+
 | Etiqueta | Activador | Condición |
 | --- | --- | --- |
 | GA4 - evento - view_item_list | `CE - view_item_list` (evento personalizado) | event = `view_item_list`; ecommerce desde el dataLayer |

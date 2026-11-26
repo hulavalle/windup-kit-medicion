@@ -38,7 +38,8 @@ Puedes hacer la clase por tu cuenta. Los bucles son las partes de la implementac
 | `gtm4wp.md` | Cómo instalar GTM en WordPress con GTM4WP, qué ajustes activar y qué eventos empuja | En el bucle 0 y en tu proyecto |
 | `plan/` | La matriz de conversiones, las UTMs y el registro de QA en CSV. Empiezan con filas de ejemplo de Café Fandango: sustitúyelas por las tuyas. En Excel no abras los CSV con doble clic, porque se descolocan las columnas y las tildes: usa **Datos** > **Obtener datos** > **Desde texto/CSV** (origen UTF-8, delimitador coma) y guarda como **CSV UTF-8 (delimitado por comas)**. | Rellenas una fila por decisión |
 | `especificacion.md` | El contrato técnico: eventos, parámetros, IDs y dataLayer | Lo que entregas a quien desarrolla la web |
-| `gtm/` | `wp-tags-base.json` (tu punto de partida en WordPress), soluciones de referencia y el validador | En la implementación |
+| `gtm/` | `wp-tags-base.json` (tu punto de partida en WordPress), `wp-tags-eventos.json` (las etiquetas de los eventos de la clase), soluciones de referencia y el validador | En la implementación |
+| `videos/` | Vídeo paso a paso: actualizar GTM con la plantilla de eventos, probar cada evento y comprobarlo en DebugView | Antes de implementar y cuando prepares la entrega |
 | `web/` | La web demo de Café Fandango | La usa el profesor en las demos; tú practicas en tu WordPress |
 | `AGENTS.md` | Instrucciones para tu asistente de IA (`CLAUDE.md` y `GEMINI.md` remiten a él) | Cuando trabajas el repo con IA |
 | `mcp.md` | Cómo conectar GA4, GTM y Google Ads a tu asistente (MCP), en qué asistente funciona y con qué reglas | Cuando trabajas con IA conectada |
@@ -50,6 +51,7 @@ Primero, el diseño: pasos 0 a 6 del cuaderno PDF, con las entidades y el event 
 
 1. Instala el plugin GTM4WP en el WordPress de tu proyecto y pega el ID de tu contenedor (guía: `gtm4wp.md`).
 2. En GTM: Administrar > Importar contenedor > `gtm/wp-tags-base.json` > espacio de trabajo nuevo > Combinar. Cambia `Const - GA4 ID` por el ID de medición de tu propiedad de GA4.
+   Para tener ya las etiquetas de los eventos de la clase, importa después `gtm/wp-tags-eventos.json` en ese mismo espacio de trabajo (Existente > Combinar). Paso a paso en vídeo: [`videos/`](videos/README.md).
 3. Vista previa en GTM y a construir lo que pide cada bucle, con la matriz de tu proyecto. El profesor lo enseña antes con Café Fandango.
 
 ## Para tu proyecto

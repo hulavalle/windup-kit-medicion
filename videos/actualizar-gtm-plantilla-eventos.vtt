@@ -1,0 +1,266 @@
+WEBVTT
+
+00:00:00.500 --> 00:00:05.302
+Vamos a actualizar tu contenedor de Google Tag Manager con la plantilla de eventos del máster.
+
+00:00:05.302 --> 00:00:10.141
+Abre el repositorio windup-kit-medicion en GitHub y entra en la carpeta gtm.
+
+00:00:11.467 --> 00:00:13.735
+Dentro verás varios archivos JSON.
+
+00:00:13.735 --> 00:00:17.404
+El que necesitas es wp-tags-eventos.json.
+
+00:00:17.404 --> 00:00:19.062
+Haz clic en él.
+
+00:00:20.367 --> 00:00:23.364
+Pulsa el botón de descarga, Download raw file.
+
+00:00:23.364 --> 00:00:26.384
+El archivo se guarda en tu carpeta de descargas.
+
+00:00:26.384 --> 00:00:28.524
+No hace falta abrirlo.
+
+00:00:29.833 --> 00:00:32.374
+Ahora abre tu contenedor en Google Tag Manager.
+
+00:00:32.374 --> 00:00:34.159
+Comprueba a la izquierda
+
+00:00:34.159 --> 00:00:38.900
+que estás en el espacio de trabajo donde ya importaste la base y pusiste tu ID de GA4.
+
+00:00:38.900 --> 00:00:41.568
+En este vídeo se llama Vídeo alumno.
+
+00:00:42.900 --> 00:00:48.285
+Ve a la pestaña Administrador y, en la columna del contenedor, pulsa Importar contenedor.
+
+00:00:49.600 --> 00:00:51.692
+Pulsa Elija el archivo de contenedor
+
+00:00:51.692 --> 00:00:55.946
+y selecciona el wp-tags-eventos.json que acabas de descargar.
+
+00:00:57.267 --> 00:01:01.858
+En Elegir espacio de trabajo, pulsa Existente y elige tu espacio de trabajo.
+
+00:01:01.858 --> 00:01:06.220
+No elijas Nuevo: un espacio nuevo no tendría tu ID de GA4.
+
+00:01:07.534 --> 00:01:11.178
+Marca Combinar y, debajo, Cambiar el nombre de etiquetas,
+
+00:01:11.178 --> 00:01:13.561
+activadores y variables en conflicto.
+
+00:01:13.561 --> 00:01:16.212
+Así no se pierde nada de lo que ya tenías.
+
+00:01:16.212 --> 00:01:18.547
+Nunca elijas Sobrescribir.
+
+00:01:19.867 --> 00:01:23.472
+Revisa el recuento antes de confirmar: cero modificaciones,
+
+00:01:23.472 --> 00:01:26.304
+veintiún elementos añadidos y cero eliminados.
+
+00:01:26.304 --> 00:01:31.273
+Cero modificaciones significa que tu ID de GA4 y tus variables no se tocan.
+
+00:01:31.273 --> 00:01:34.975
+Baja hasta el final y pulsa Añadir a espacio de trabajo.
+
+00:01:36.300 --> 00:01:37.129
+Listo.
+
+00:01:37.129 --> 00:01:40.601
+Arriba ves los cambios pendientes del espacio de trabajo.
+
+00:01:40.601 --> 00:01:44.483
+Todavía no están publicados: primero los vamos a probar.
+
+00:01:45.800 --> 00:01:49.822
+En Etiquetas tienes ahora una etiqueta de GA4 por cada evento de la clase,
+
+00:01:49.822 --> 00:01:51.472
+cada una con su activador.
+
+00:01:51.472 --> 00:01:54.659
+Las de ecommerce solo saltan en una tienda WooCommerce,
+
+00:01:54.659 --> 00:01:58.245
+y las de teléfono y WhatsApp solo si tu web tiene esos enlaces.
+
+00:01:59.567 --> 00:02:03.813
+Para probar sin publicar, pulsa Vista previa, arriba a la derecha.
+
+00:02:05.133 --> 00:02:06.791
+Se abre Tag Assistant.
+
+00:02:06.791 --> 00:02:10.095
+Escribe la dirección de tu web y pulsa Conectar.
+
+00:02:11.400 --> 00:02:15.154
+Tu web se abre en una ventana nueva con el aviso Tag Assistant conectado.
+
+00:02:15.154 --> 00:02:20.219
+Deja abiertas las dos ventanas: lo que hagas en la web aparecerá en Tag Assistant.
+
+00:02:21.533 --> 00:02:24.655
+Vuelve a la pestaña de Tag Assistant y pulsa Continuar.
+
+00:02:24.655 --> 00:02:28.231
+A la izquierda irás viendo cada evento que ocurre en la página.
+
+00:02:29.533 --> 00:02:32.694
+Primer evento: espera cinco segundos en la página.
+
+00:02:32.694 --> 00:02:35.523
+Haz clic en el evento Temporizador y comprueba
+
+00:02:35.523 --> 00:02:39.462
+que en Etiquetas activadas aparece GA4 evento timer_5s.
+
+00:02:40.767 --> 00:02:45.769
+Segundo evento: en tu web, baja hasta pasar las tres cuartas partes de la página.
+
+00:02:47.100 --> 00:02:50.299
+En Tag Assistant aparece Profundidad de desplazamiento.
+
+00:02:50.299 --> 00:02:54.187
+Ábrelo y comprueba que se ha activado GA4 evento page_read.
+
+00:02:55.500 --> 00:02:58.399
+Tercer evento, el clic en tu botón principal.
+
+00:02:58.399 --> 00:03:00.763
+En esta web es el botón Contacto.
+
+00:03:00.763 --> 00:03:02.415
+Haz clic en él.
+
+00:03:03.733 --> 00:03:05.179
+Abre el evento Clic.
+
+00:03:05.179 --> 00:03:06.980
+Etiquetas activadas: ninguna.
+
+00:03:06.980 --> 00:03:09.823
+cta_click está en las no activadas,
+
+00:03:09.823 --> 00:03:14.228
+porque la plantilla espera un botón con la clase cta-principal y este botón no la tiene.
+
+00:03:14.228 --> 00:03:16.884
+Hay que ajustar el activador a tu web.
+
+00:03:18.200 --> 00:03:21.777
+Con el evento Clic seleccionado, abre la pestaña Variables.
+
+00:03:21.777 --> 00:03:24.590
+Aquí ves lo que GTM sabe de ese clic.
+
+00:03:24.590 --> 00:03:29.856
+Click ID está vacío y Click Classes lo comparten todos los botones, así que no sirven.
+
+00:03:29.856 --> 00:03:34.346
+Click Text vale Contacto y Click URL termina en almohadilla contacto.
+
+00:03:34.346 --> 00:03:37.227
+Cualquiera de los dos identifica el botón.
+
+00:03:38.533 --> 00:03:42.806
+Vuelve a Google Tag Manager, entra en Activadores y abre Clic guion CTA.
+
+00:03:44.133 --> 00:03:47.313
+La condición genérica busca la clase cta-principal.
+
+00:03:47.313 --> 00:03:50.432
+Pulsa sobre la configuración para editarla.
+
+00:03:51.733 --> 00:03:56.016
+En el primer campo, abre el desplegable de variables y elige Click Text.
+
+00:03:57.333 --> 00:04:00.885
+Elige el operador es igual a y escribe el texto exacto de tu botón,
+
+00:04:00.885 --> 00:04:04.429
+en este caso Contacto, respetando mayúsculas.
+
+00:04:04.429 --> 00:04:07.525
+Si quieres medir todos los botones que llevan al formulario,
+
+00:04:07.525 --> 00:04:10.890
+usa Click URL contiene almohadilla contacto.
+
+00:04:10.890 --> 00:04:12.227
+Pulsa Guardar.
+
+00:04:13.533 --> 00:04:17.205
+Vuelve a pulsar Vista previa para cargar el cambio y repite el clic.
+
+00:04:17.205 --> 00:04:22.396
+Ahora, en el evento Clic, GA4 evento cta_click aparece como activada.
+
+00:04:23.700 --> 00:04:25.380
+Cuarto evento, el lead.
+
+00:04:25.380 --> 00:04:28.428
+Rellena el formulario de tu web con datos de prueba,
+
+00:04:28.428 --> 00:04:30.880
+que se vea que es una prueba, y envíalo.
+
+00:04:32.200 --> 00:04:35.100
+En Tag Assistant aparece el evento Envío de formulario,
+
+00:04:35.100 --> 00:04:37.287
+que es el propio de Google Tag Manager.
+
+00:04:37.287 --> 00:04:40.874
+Ábrelo: GA4 evento generate_lead está activada.
+
+00:04:40.874 --> 00:04:44.715
+Ojo, este activador salta con cualquier formulario de la web;
+
+00:04:44.715 --> 00:04:48.346
+si tienes varios, fíltralo por Form ID o por Page Path.
+
+00:04:49.667 --> 00:04:52.655
+Ahora comprueba que los eventos llegan a Google Analytics.
+
+00:04:52.655 --> 00:04:57.308
+En GA4 ve a Administrar, Visualización de datos, DebugView.
+
+00:04:57.308 --> 00:05:03.007
+En Principales eventos deben aparecer timer_5s, page_read, cta_click y generate_lead.
+
+00:05:03.007 --> 00:05:08.125
+form_start y form_submit los envía la medición mejorada de GA4, no tu contenedor.
+
+00:05:09.434 --> 00:05:11.623
+Haz clic en un evento de la línea de tiempo,
+
+00:05:11.623 --> 00:05:14.528
+por ejemplo generate_lead, para ver sus parámetros.
+
+00:05:14.528 --> 00:05:17.916
+debug_mode igual a uno confirma que viene de tu vista previa.
+
+00:05:19.234 --> 00:05:24.119
+Para la entrega, haz una captura de esta pantalla de DebugView con tus eventos en la lista.
+
+00:05:24.119 --> 00:05:25.746
+Si algún evento no aparece,
+
+00:05:25.746 --> 00:05:29.521
+vuelve a la vista previa y revisa su activador en la pestaña Variables.
+
+00:05:29.521 --> 00:05:33.303
+Y recuerda: no publiques hasta que todo esté comprobado.
+
