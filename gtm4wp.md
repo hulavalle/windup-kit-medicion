@@ -186,6 +186,8 @@ Notas para construirla:
 
 `gtm/wp-tags-base.json` es el punto de partida para WordPress + GTM4WP: Google tag, `Const - GA4 ID`, las variables integradas de clic, formulario, scroll, vídeo y página, las variables de capa de datos de las claves de esta guía (`dlv - ecommerce.value`, `dlv - ecommerce.currency`, `dlv - ecommerce.transaction_id`, `dlv - ecommerce.items`, `dlv - formid`, `dlv - formname`) y el activador `Timer - 5 s`. No trae etiquetas de evento: las construyes tú. Cómo importarlo: `gtm/README.md`.
 
+Si prefieres partir de las etiquetas ya hechas, `gtm/wp-tags-eventos.json` se combina encima de la base y añade una etiqueta de GA4 por evento de la clase, sin parámetros, sin tocar tu `Const - GA4 ID` ni tus variables (ver «Plantilla de eventos» en `gtm/README.md`).
+
 ## Avisos
 
 - **No es una herramienta de consentimiento.** GTM4WP no muestra banner ni guarda el consentimiento. Puede enviar el estado `default` de Consent Mode v2 y conectar con Cookiebot, CookieYes y Axeptio, pero necesitas una plataforma de gestión de consentimiento (CMP) y configurar el consentimiento en las etiquetas. Su propia guía de ecommerce lo dice: no tiene en cuenta si usas una CMP.

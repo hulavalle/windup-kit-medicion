@@ -5,11 +5,12 @@ Contenedores de Google Tag Manager en formato de exportación (`exportFormatVers
 | Archivo | Para quién | Qué es |
 | --- | --- | --- |
 | `wp-tags-base.json` | **Alumno** | Punto de partida para su WordPress con GTM4WP: Google tag, variables de GTM4WP, variables integradas y el activador `Timer - 5 s`. Sin etiquetas de evento. **Es el que importa el alumno.** |
+| `wp-tags-eventos.json` | **Alumno** | Complemento que se combina encima de la base: una etiqueta de GA4 por evento de la clase (sin parámetros) con su activador. Sin variables ni Google tag. |
 | `wp-solucion-ecommerce.json` | Profesor | Referencia para una tienda WooCommerce: la base más las etiquetas de la matriz de Café Fandango que GTM4WP puede producir. |
 | `wp-solucion-leadgen.json` | Profesor | Referencia para una web de captación con Contact Form 7: la base más una etiqueta y un activador por fila de `../plan/ejemplos/matriz-clinica-dental.csv`. |
 | `fandango-inicio.json` | Profesor (demo) | Punto de partida sobre la web demo de Café Fandango: Google tag y variables. Sin activadores ni etiquetas de evento. |
 | `fandango-solucion.json` | Profesor (demo) | `fandango-inicio.json` más los 9 activadores y las 9 etiquetas de evento que cubren las 10 filas de `../plan/ejemplos/matriz-cafe-fandango.csv`. |
-| `validar.py` | Quien toque los JSON | Comprueba la estructura de tu contenedor y, sin argumentos, los cinco archivos del kit contra la especificación y su matriz. |
+| `validar.py` | Quien toque los JSON | Comprueba la estructura de tu contenedor y, sin argumentos, los seis archivos del kit contra la especificación, su matriz o su base. |
 
 Las soluciones son referencias para corregir y comparar, no para que el alumno las importe en su contenedor de trabajo: el ejercicio es construir las etiquetas a partir de su propia matriz.
 
@@ -26,7 +27,7 @@ Las soluciones son referencias para corregir y comparar, no para que el alumno l
    - **Sobrescribir** (*Overwrite*) borra todo lo que tenga el espacio de trabajo y deja solo lo importado. Úsala solo en un contenedor vacío o de pruebas.
 6. Revisa la vista previa de cambios (cuántas etiquetas, activadores y variables se añaden) y pulsa **Confirmar**.
 
-Todos los archivos traen `GA4 - Google tag`. No combines dos de ellos en el mismo espacio de trabajo: duplicarías la Google tag y cada página contaría dos veces.
+Todos los archivos traen `GA4 - Google tag` menos `wp-tags-eventos.json`. No combines dos de los que la traen en el mismo espacio de trabajo: duplicarías la Google tag y cada página contaría dos veces. La única combinación prevista es `wp-tags-base.json` y, encima, `wp-tags-eventos.json`.
 
 ## Cambiar el ID de GA4
 
@@ -49,6 +50,43 @@ Qué trae:
 - Activador `Timer - 5 s` (Temporizador, 5000 ms, límite 1, activo en todas las páginas) para la microconversión `timer_5s`. Para medirla solo en algunas páginas, cambia su condición **Habilitar este activador cuando** (por ejemplo, Page Path contiene `/tratamientos/`).
 
 No trae etiquetas de evento: el alumno las construye a partir de su matriz con la tabla de correspondencias de `../gtm4wp.md`.
+
+## Plantilla de eventos: `wp-tags-eventos.json`
+
+Una etiqueta de evento de GA4 por cada evento de la clase, ya conectada a su activador. Las etiquetas solo llevan el nombre del evento, sin parámetros: los añades tú si tu matriz los pide.
+
+| Etiqueta | Activador | Condición |
+| --- | --- | --- |
+| GA4 - evento - view_item_list | `CE - view_item_list` (evento personalizado) | event = `view_item_list`; ecommerce desde el dataLayer |
+| GA4 - evento - view_item | `CE - view_item` | event = `view_item`; ecommerce desde el dataLayer |
+| GA4 - evento - add_to_cart | `CE - add_to_cart` | event = `add_to_cart`; ecommerce desde el dataLayer |
+| GA4 - evento - begin_checkout | `CE - begin_checkout` | event = `begin_checkout`; ecommerce desde el dataLayer |
+| GA4 - evento - purchase | `CE - purchase` | event = `purchase`; ecommerce desde el dataLayer |
+| GA4 - evento - page_read | `Scroll - 75 %` (profundidad de desplazamiento vertical, 75 %) | Todas las páginas |
+| GA4 - evento - timer_5s | `Timer - 5 s` (el de la base: 5000 ms, límite 1) | Todas las páginas |
+| GA4 - evento - cta_click | `Clic - CTA` (todos los elementos) | Click Element coincide con el selector CSS `.cta-principal, .cta-principal *` |
+| GA4 - evento - generate_lead | `Form - Envío de formulario` (envío de formulario de GTM, sin esperar etiquetas ni comprobar la validación) | Todos los formularios |
+| GA4 - evento - phone_click | `Clic - Teléfono` (solo enlaces) | Click URL empieza por `tel:` |
+| GA4 - evento - whatsapp_click | `Clic - WhatsApp` (solo enlaces) | Click URL coincide con la expresión regular `wa\.me\|api\.whatsapp\.com` |
+
+«Ecommerce desde el dataLayer» es la casilla **Enviar datos de comercio electrónico** de la etiqueta, no un parámetro: sin ella, `purchase` llega a GA4 sin importe ni ID de transacción.
+
+Cómo importarla:
+
+1. Importa antes `wp-tags-base.json` (pasos de arriba).
+2. Importa `wp-tags-eventos.json` en **el mismo espacio de trabajo** con **Combinar**.
+3. No trae variables ni Google tag: tu `Const - GA4 ID` con tu ID de GA4, tus variables y tu Google tag no cambian. Las etiquetas leen el ID de tu `Const - GA4 ID`.
+
+Qué adaptar:
+
+- Pon la clase `cta-principal` al botón principal en el editor de WordPress (en el bloque Botón, **Avanzado > Clase(s) CSS adicional(es)**). Vale en el botón o en su bloque contenedor: el selector cubre los dos.
+- `Timer - 5 s` y `Scroll - 75 %` miden en todas las páginas. Si solo te interesan algunas, cambia en `Timer - 5 s` la condición **Habilitar este activador cuando** y en `Scroll - 75 %` elige **Algunas páginas** (por ejemplo, Page Path contiene `/tratamientos/`).
+- `Form - Envío de formulario` se activa con cada envío de cualquier formulario de la web, también con los que el plugin del formulario rechaza después (un campo obligatorio vacío, un email mal escrito). Para quedarte con uno, elige **Algunos formularios** y filtra por Form ID o por Page Path. Con Contact Form 7, el evento `gtm4wp.contactForm7MailSent` (como en `wp-solucion-leadgen.json`) solo cuenta los envíos correctos.
+
+Avisos al combinar:
+
+- GTM detecta los conflictos por nombre. Si ya habías creado una etiqueta o un activador con uno de estos nombres, la vista previa lo marca como conflicto: elige **Cambiar el nombre de etiquetas, activadores y variables en conflicto** y borra después la etiqueta repetida, o el evento contará dos veces.
+- Lo mismo pasa si habías cambiado `Timer - 5 s` (por ejemplo, su condición de página). Si no lo tocaste, es idéntico al de la base y no aparece como conflicto.
 
 ## Soluciones de WordPress (referencia del profesor)
 
@@ -122,9 +160,10 @@ python3 gtm/validar.py gtm/<proyecto>.json
 
 Solo usa la librería estándar de Python 3: no hay que instalar nada. Con tu archivo comprueba la estructura: JSON válido con `exportFormatVersion: 2`, cada `firingTriggerId` apunta a un activador del archivo o a uno integrado de GTM, cada `{{variable}}` está definida o es una integrada activada, no hay IDs ni nombres repetidos, ninguna variable lee `inputs` y la Google tag usa `{{Const - GA4 ID}}`. No lo compara con tu matriz, porque `validar.py` no la conoce: esa comparación la haces tú (plantilla 8.3 del paso 8).
 
-Sin argumentos (`python3 gtm/validar.py`) no mira tu contenedor: comprueba los cinco archivos del kit. Además de la estructura:
+Sin argumentos (`python3 gtm/validar.py`) no mira tu contenedor: comprueba los seis archivos del kit. Además de la estructura:
 
 - `fandango-inicio.json` y `wp-tags-base.json`: traen las variables que piden la especificación y `../gtm4wp.md`, sin etiquetas de evento; la base solo trae `Timer - 5 s` (5000 ms, límite 1, todas las páginas). Los de Fandango no llevan variables integradas que la especificación no pida (las de vídeo, por ejemplo).
+- `wp-tags-eventos.json`: simula la combinación sobre `wp-tags-base.json`. Lo que se llame igual que en la base debe ser idéntico (si no, GTM sobrescribiría o renombraría lo del alumno), no trae variables ni Google tag, y la estructura se comprueba sobre el resultado combinado. Trae exactamente las etiquetas de la tabla de arriba, cada una `gaawe` con su `eventName`, `{{Const - GA4 ID}}` y sin parámetros, con ecommerce solo en los cinco eventos de ecommerce, y activada solo por su activador con su tipo y sus condiciones.
 - Cada solución contra su matriz: por fila, su etiqueta `GA4 - evento - <evento>`, su activador con el tipo y las condiciones de la matriz (en los temporizadores, 5000 ms y límite 1) y sus parámetros; y ninguna etiqueta de evento que no salga de la matriz. `fandango-solucion.json` y `wp-solucion-ecommerce.json` se miden contra la matriz de Café Fandango, `../plan/ejemplos/matriz-cafe-fandango.csv` (la de WooCommerce sin la fila 10); `wp-solucion-leadgen.json`, contra `../plan/ejemplos/matriz-clinica-dental.csv`.
 
 La comprobación sin argumentos no lee `../plan/matriz.csv`, que es la de tu proyecto: puedes reescribirla sin que fallen las soluciones de ejemplo.

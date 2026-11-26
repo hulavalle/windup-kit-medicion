@@ -3,12 +3,15 @@
 Archivos:
 - fandango-inicio.json y fandango-solucion.json (web demo de Café Fandango, plan/ejemplos/matriz-cafe-fandango.csv).
 - wp-tags-base.json (WordPress + GTM4WP, punto de partida del alumno).
+- wp-tags-eventos.json (complemento que el alumno combina sobre wp-tags-base.json: una etiqueta por evento,
+  sin parámetros). Se simula la combinación: lo que se llame igual que en la base debe ser idéntico.
 - wp-solucion-ecommerce.json (WooCommerce, filas de plan/ejemplos/matriz-cafe-fandango.csv que GTM4WP puede producir).
 - wp-solucion-leadgen.json (clínica dental, plan/ejemplos/matriz-clinica-dental.csv).
 
 Uso, desde la raíz del repositorio: python3 gtm/validar.py gtm/<proyecto>.json
 Con un archivo de otro nombre (tu proyecto) solo comprueba la estructura.
-Sin argumentos comprueba los cinco del kit contra las matrices de ejemplo de plan/ejemplos/.
+Sin argumentos comprueba los seis del kit: las soluciones contra las matrices de ejemplo de
+plan/ejemplos/ y wp-tags-eventos.json combinado sobre wp-tags-base.json.
 No lee plan/matriz.csv: esa es la de tu proyecto.
 Sale con código 1 si algo falla.
 """
@@ -63,6 +66,8 @@ SCROLL_GUIA = ("SCROLL_DEPTH", [("CONTAINS", "{{Page Path}}", "/guia")])
 CTA_HERO = ("CLICK", [("EQUALS", "{{Click ID}}", "cta-suscribirme-hero")])
 ECOM_TRIGGERS = {ev: (f"CE - {ev}", *ce(ev))
                  for ev in ["view_item_list", "view_item", "add_to_cart", "begin_checkout", "purchase"]}
+PHONE_CLICK = ("Clic - Teléfono", "LINK_CLICK", [("STARTS_WITH", "{{Click URL}}", "tel:")])
+WHATSAPP_CLICK = ("Clic - WhatsApp", "LINK_CLICK", [("MATCH_REGEX", "{{Click URL}}", r"wa\.me|api\.whatsapp\.com")])
 
 # Por archivo: matriz, activador esperado por evento (nombre, tipo, condiciones obligatorias),
 # eventos de la matriz que el archivo no cubre y parámetros de la matriz que no se envían.
@@ -98,9 +103,8 @@ SOLUTIONS = {
             "timer_5s": ("Timer - 5 s", *timer("/tratamientos/")),
             "generate_lead": ("CE - CF7 Pedir cita",
                               *ce("gtm4wp.contactForm7MailSent", ("EQUALS", "{{dlv - formname}}", "Pedir cita"))),
-            "phone_click": ("Clic - Teléfono", "LINK_CLICK", [("STARTS_WITH", "{{Click URL}}", "tel:")]),
-            "whatsapp_click": ("Clic - WhatsApp", "LINK_CLICK",
-                               [("MATCH_REGEX", "{{Click URL}}", r"wa\.me|api\.whatsapp\.com")]),
+            "phone_click": PHONE_CLICK,
+            "whatsapp_click": WHATSAPP_CLICK,
         },
         "skip_events": set(), "unsent_params": set(),
     },
@@ -109,7 +113,24 @@ STARTERS = {
     "fandango-inicio.json": {"variables": FANDANGO_VARIABLES, "builtins": FANDANGO_BUILTINS},
     "wp-tags-base.json": {"variables": WP_VARIABLES, "builtins": WP_BUILTINS},
 }
-DEFAULT_FILES = ["fandango-inicio.json", "fandango-solucion.json", "wp-tags-base.json",
+# Complementos que se importan con Combinar sobre una base: por evento, (activador, tipo, condiciones exactas,
+# datos de ecommerce). Las etiquetas no llevan parámetros de evento.
+ADDONS = {
+    "wp-tags-eventos.json": {
+        "base": "wp-tags-base.json", "variables": WP_VARIABLES, "builtins": WP_BUILTINS,
+        "events": {
+            **{ev: (*t, True) for ev, t in ECOM_TRIGGERS.items()},
+            "page_read": ("Scroll - 75 %", "SCROLL_DEPTH", [], False),
+            "timer_5s": ("Timer - 5 s", "TIMER", [("MATCH_REGEX", "{{Page Path}}", ".*")], False),
+            "cta_click": ("Clic - CTA", "CLICK",
+                          [("CSS_SELECTOR", "{{Click Element}}", ".cta-principal, .cta-principal *")], False),
+            "generate_lead": ("Form - Envío de formulario", "FORM_SUBMISSION", [], False),
+            "phone_click": (*PHONE_CLICK, False),
+            "whatsapp_click": (*WHATSAPP_CLICK, False),
+        },
+    },
+}
+DEFAULT_FILES = ["fandango-inicio.json", "fandango-solucion.json", "wp-tags-base.json", "wp-tags-eventos.json",
                  "wp-solucion-ecommerce.json", "wp-solucion-leadgen.json"]
 
 REF = re.compile(r"\{\{([^{}]+)\}\}")
@@ -140,15 +161,17 @@ def conditions(trigger):
     return out
 
 
-def check(path, errors, required_variables=(), required_builtins=(), exact_builtins=False):
+def check(path, errors, required_variables=(), required_builtins=(), exact_builtins=False, data=None):
+    """Estructura del contenedor de path, o de data si se pasa (un complemento ya combinado con su base)."""
     def err(msg):
         errors.append(f"{path.name}: {msg}")
 
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        err(f"JSON no válido ({exc})")
-        return None
+    if data is None:
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            err(f"JSON no válido ({exc})")
+            return None
 
     if data.get("exportFormatVersion") != 2:
         err("exportFormatVersion debe ser 2")
@@ -243,6 +266,62 @@ def check_starter(cv, path, errors):
     check_timer(triggers[0], ("MATCH_REGEX", "{{Page Path}}", ".*"), where, errors)
 
 
+def merge(path, base_name, errors):
+    """Simula Importar > Combinar del complemento sobre la base. GTM empareja por nombre: lo que se llame
+    igual y sea idéntico no cambia; si cambia, sobrescribiría o renombraría lo que el alumno ya tiene."""
+    try:
+        addon = json.loads(path.read_text(encoding="utf-8"))
+        base = json.loads((GTM_DIR / base_name).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None  # check() informa del JSON roto
+    acv, merged = addon.get("containerVersion", {}), dict(base.get("containerVersion", {}))
+    if acv.get("variable"):
+        errors.append(f"{path.name}: no lleva variables; al combinar tocaría las del alumno (Const - GA4 ID)")
+    if any(t.get("type") == "googtag" for t in acv.get("tag", [])):
+        errors.append(f"{path.name}: no lleva Google tag, ya la trae {base_name}")
+    for kind in ("tag", "trigger", "variable", "builtInVariable"):
+        own = {i.get("name"): i for i in merged.get(kind, [])}
+        for item in acv.get(kind, []):
+            if item.get("name") in own and item != own[item.get("name")]:
+                errors.append(f"{path.name}: {kind} {item.get('name')!r} se llama igual que en {base_name} "
+                              f"pero cambia; al combinar sobrescribiría o renombraría el del alumno")
+        merged[kind] = merged.get(kind, []) + [i for i in acv.get(kind, []) if i.get("name") not in own]
+    return {**addon, "containerVersion": merged}
+
+
+def check_addon(cv, path, conf, errors):
+    """Una etiqueta gaawe por evento de la tabla, sin parámetros, activada solo por su activador."""
+    tags = {t["name"]: t for t in cv.get("tag", [])}
+    trig_by_id = {tr["triggerId"]: tr for tr in cv.get("trigger", [])}
+    expected = {f"GA4 - evento - {ev}" for ev in conf["events"]}
+    for label, names in [("faltan", expected - set(tags)), ("sobran", set(tags) - expected - {"GA4 - Google tag"})]:
+        if names:
+            errors.append(f"{path.name}: {label} las etiquetas {sorted(names)}")
+    for ev, (trigger, ttype, conds, ecommerce) in conf["events"].items():
+        tag = tags.get(f"GA4 - evento - {ev}")
+        if tag is None:
+            continue
+        where = f"{path.name}: {tag['name']!r}"
+        p = params(tag)
+        if tag["type"] != "gaawe" or p.get("eventName", {}).get("value") != ev \
+                or p.get("measurementIdOverride", {}).get("value") != "{{Const - GA4 ID}}":
+            errors.append(f"{where} debe ser gaawe con eventName {ev} y measurementIdOverride {{{{Const - GA4 ID}}}}")
+        if p.get("eventSettingsTable", {}).get("list"):
+            errors.append(f"{where} no lleva parámetros de evento (eventSettingsTable)")
+        if (p.get("sendEcommerceData", {}).get("value") == "true") != ecommerce:
+            errors.append(f"{where}: los datos de ecommerce deben estar {'activados' if ecommerce else 'desactivados'}")
+        fired = [trig_by_id.get(i, {}) for i in tag.get("firingTriggerId", [])]
+        if [tr.get("name") for tr in fired] != [trigger]:
+            errors.append(f"{where} debe activarse solo con {trigger!r}")
+            continue
+        if ttype == "TIMER":
+            check_timer(fired[0], conds[0], where, errors)
+        elif fired[0].get("type") != ttype or conditions(fired[0]) != set(conds):
+            errors.append(f"{where}: {trigger!r} debe ser {ttype} con las condiciones {sorted(conds)}, "
+                          f"es {fired[0].get('type')} con {sorted(conditions(fired[0]))}")
+    return len(expected)
+
+
 def check_solution(cv, path, conf, errors):
     tags = {t["name"]: t for t in cv.get("tag", [])}
     triggers = {tr["name"]: tr for tr in cv.get("trigger", [])}
@@ -309,18 +388,22 @@ def main():
     files = [Path(a).resolve() for a in sys.argv[1:]] or [GTM_DIR / f for f in DEFAULT_FILES]
     errors, report = [], []
     for path in files:
-        conf = SOLUTIONS.get(path.name) or STARTERS.get(path.name)
+        conf = SOLUTIONS.get(path.name) or STARTERS.get(path.name) or ADDONS.get(path.name)
         if conf is None:
             if check(path, errors) is not None:
                 report.append(f"{path.name} estructura válida (sin matriz asociada en validar.py)")
             continue
+        merged = merge(path, conf["base"], errors) if path.name in ADDONS else None
         cv = check(path, errors, conf["variables"], conf["builtins"],
-                   exact_builtins=conf["builtins"] is FANDANGO_BUILTINS)
+                   exact_builtins=conf["builtins"] is FANDANGO_BUILTINS, data=merged)
         if cv is None:
             continue
         if path.name in STARTERS:
             check_starter(cv, path, errors)
             report.append(f"{path.name} válido")
+        elif path.name in ADDONS:
+            n = check_addon(cv, path, conf, errors)
+            report.append(f"{path.name} válido, {n} etiquetas de evento sin parámetros, combinado sobre {conf['base']}")
         else:
             covered, total = check_solution(cv, path, conf, errors)
             skipped = f", {total - covered} fuera de alcance" if covered != total else ""
