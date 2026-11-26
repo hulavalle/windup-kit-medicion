@@ -4,7 +4,9 @@
 
 [`actualizar-gtm-plantilla-eventos.mp4`](actualizar-gtm-plantilla-eventos.mp4) (5 min 36 s, narrado en español). Subtítulos: [`.vtt`](actualizar-gtm-plantilla-eventos.vtt) y [`.srt`](actualizar-gtm-plantilla-eventos.srt).
 
-Cómo verlo: haz clic en el `.mp4` y, si GitHub no lo reproduce en la página, pulsa **View raw** o el botón de descarga. Para los subtítulos, descarga el vídeo y el `.srt` en la misma carpeta y ábrelo con VLC.
+**Verlo en el navegador, con subtítulos y capítulos: [https://hulavalle.github.io/windup-kit-medicion/videos/](https://hulavalle.github.io/windup-kit-medicion/videos/)**
+
+GitHub no reproduce vídeos de este tamaño en la página del archivo: si abres el `.mp4` aquí, solo podrás descargarlo. Para verlo sin conexión, descarga el `.mp4` y el `.srt` en la misma carpeta y ábrelo con VLC.
 
 Qué aprendes:
 

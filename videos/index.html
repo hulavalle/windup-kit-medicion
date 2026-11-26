@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Actualizar GTM con la plantilla de eventos · Kit de medición</title>
+<style>
+  :root { --azul: #1565D8; --texto: #102A43; --suave: #52606D; --borde: #D9E2EC; --fondo: #FFFFFF; }
+  @media (prefers-color-scheme: dark) { :root { --azul: #6AA6FF; --texto: #E4E7EB; --suave: #9AA5B1; --borde: #323F4B; --fondo: #121417; } }
+  body { margin: 0; background: var(--fondo); color: var(--texto); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1000px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 4px; }
+  p.sub { color: var(--suave); margin: 0 0 20px; }
+  video { width: 100%; height: auto; border: 1px solid var(--borde); border-radius: 8px; background: #000; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; }
+  ol { padding-left: 0; list-style: none; margin: 0; }
+  li { border-bottom: 1px solid var(--borde); }
+  li button { all: unset; cursor: pointer; display: flex; gap: 16px; width: 100%; padding: 10px 4px; }
+  li button:hover, li button:focus-visible { color: var(--azul); }
+  li span.t { font-variant-numeric: tabular-nums; color: var(--suave); min-width: 3.5em; }
+  a { color: var(--azul); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Actualizar GTM con la plantilla de eventos y comprobarla en GA4</h1>
+  <p class="sub">Kit de medición · Máster Técnico en Marketing Digital &amp; IA · 5 min 36 s</p>
+  <video id="v" controls preload="metadata">
+    <source src="actualizar-gtm-plantilla-eventos.mp4" type="video/mp4">
+    <track kind="subtitles" src="actualizar-gtm-plantilla-eventos.vtt" srclang="es" label="Español" default>
+    Tu navegador no reproduce vídeo: <a href="actualizar-gtm-plantilla-eventos.mp4">descárgalo</a>.
+  </video>
+  <h2>Capítulos</h2>
+  <ol>
+    <li><button data-t="0"><span class="t">00:00</span>1. Descargar la plantilla</button></li>
+    <li><button data-t="29"><span class="t">00:29</span>2. Importar en GTM</button></li>
+    <li><button data-t="119"><span class="t">01:59</span>3. Vista previa</button></li>
+    <li><button data-t="149"><span class="t">02:29</span>4. Comprobar los eventos</button></li>
+    <li><button data-t="175"><span class="t">02:55</span>5. Ajustar el activador del clic</button></li>
+    <li><button data-t="263"><span class="t">04:23</span>6. Formulario y generate_lead</button></li>
+    <li><button data-t="289"><span class="t">04:49</span>7. Comprobar en DebugView y entregar</button></li>
+  </ol>
+  <p>La plantilla es <code>gtm/wp-tags-eventos.json</code> del repositorio <a href="https://github.com/hulavalle/windup-kit-medicion">windup-kit-medicion</a>.</p>
+</main>
+<script>
+  const v = document.getElementById('v');
+  document.querySelectorAll('button[data-t]').forEach(b => b.addEventListener('click', () => {
+    v.currentTime = Number(b.dataset.t); v.play();
+  }));
+</script>
+</body>
+</html>

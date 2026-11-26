@@ -55,7 +55,7 @@ No trae etiquetas de evento: el alumno las construye a partir de su matriz con l
 
 Una etiqueta de evento de GA4 por cada evento de la clase, ya conectada a su activador. Las etiquetas solo llevan el nombre del evento, sin parámetros: los añades tú si tu matriz los pide.
 
-Vídeo paso a paso (importarla, probar cada evento, ajustar el activador del clic y comprobarlo en DebugView): [`../videos/`](../videos/README.md).
+Vídeo paso a paso (importarla, probar cada evento, ajustar el activador del clic y comprobarlo en DebugView): [verlo en el navegador](https://hulavalle.github.io/windup-kit-medicion/videos/) (detalles en [`../videos/`](../videos/README.md)).
 
 | Etiqueta | Activador | Condición |
 | --- | --- | --- |

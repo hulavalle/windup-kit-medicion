@@ -51,7 +51,7 @@ Primero, el diseño: pasos 0 a 6 del cuaderno PDF, con las entidades y el event 
 
 1. Instala el plugin GTM4WP en el WordPress de tu proyecto y pega el ID de tu contenedor (guía: `gtm4wp.md`).
 2. En GTM: Administrar > Importar contenedor > `gtm/wp-tags-base.json` > espacio de trabajo nuevo > Combinar. Cambia `Const - GA4 ID` por el ID de medición de tu propiedad de GA4.
-   Para tener ya las etiquetas de los eventos de la clase, importa después `gtm/wp-tags-eventos.json` en ese mismo espacio de trabajo (Existente > Combinar). Paso a paso en vídeo: [`videos/`](videos/README.md).
+   Para tener ya las etiquetas de los eventos de la clase, importa después `gtm/wp-tags-eventos.json` en ese mismo espacio de trabajo (Existente > Combinar). Paso a paso en vídeo: [verlo en el navegador](https://hulavalle.github.io/windup-kit-medicion/videos/) (detalles en [`videos/`](videos/README.md)).
 3. Vista previa en GTM y a construir lo que pide cada bucle, con la matriz de tu proyecto. El profesor lo enseña antes con Café Fandango.
 
 ## Para tu proyecto
